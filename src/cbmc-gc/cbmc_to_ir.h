@@ -1,7 +1,7 @@
 #pragma once
 
 #include <goto-programs/goto_functions.h>
-
+#include <memory>
 
 
 namespace ir {

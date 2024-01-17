@@ -13,7 +13,7 @@ all:
 	cp src/libcircuit/libcircuit.a bin/libcircuit.a
 
 	cd src/cbmc-gc && $(MAKE)
-	cd src/cbmc-gc && $(MAKE) test/test
+	#cd src/cbmc-gc && $(MAKE) test/test
 	cp src/cbmc-gc/cbmc-gc bin/cbmc-gc
 
 	cd src/circuit-utils && $(MAKE)

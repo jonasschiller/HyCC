@@ -1,3 +1,4 @@
+CFLAGS = -Wall -std=c++98
 SRC = anonymous_member.cpp \
       ansi_c_convert_type.cpp \
       ansi_c_declaration.cpp \
@@ -45,7 +46,7 @@ include ../config.inc
 include ../common
 
 CLEANFILES = ansi-c$(LIBEXT) \
-  ansi_c_y.tab.h ansi_c_y.tab.cpp ansi_c_lex.yy.cpp ansi_c_y.tab.cpp.output \
+  ansi_c_y.tab.h ansi_c_y.tab.hpp ansi_c_y.tab.cpp ansi_c_lex.yy.cpp ansi_c_y.tab.cpp.output \
   ansi_c_y.output \
   library/converter$(EXEEXT) cprover_library.inc \
   file_converter$(EXEEXT) library_check \

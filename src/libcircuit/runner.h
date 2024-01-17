@@ -12,7 +12,8 @@
 #include <ostream>
 #include <sstream>
 #include <bitset>
-
+#include <stddef.h>
+#include <limits.h>
 #include <iostream>
 
 #include "type.h"
