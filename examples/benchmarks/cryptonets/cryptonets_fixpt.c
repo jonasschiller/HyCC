@@ -5,7 +5,7 @@
 #include <string.h>
 #include <inttypes.h>
 
-#include fp.h
+#include "./fp.h"
 
 // Parameters taken from the paper
 #define IMAGE_WIDTH 28 // 28
