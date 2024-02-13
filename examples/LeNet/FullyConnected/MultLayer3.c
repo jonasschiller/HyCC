@@ -3,7 +3,6 @@
 #include <inttypes.h>
 
 // Parameters taken from the paper
-#define IMAGE_WIDTH 28 // 28
 #define INPUT_SIZE 84
 #define OUTPUT_SIZE 10
 
@@ -17,15 +16,9 @@ typedef int64_t fixedptd;
 typedef uint32_t ufixedp_t;
 typedef uint64_t ufixedpd_t;
 
-// Decomposed to seperate shifting from remaining code
-fixedptd fixedpt_mul_inner(fixedpt a, fixedpt b)
-{
-	return (fixedptd)a * (fixedptd)b;
-}
-
 fixedpt fixedpt_mul(fixedpt a, fixedpt b)
 {
-	return (fixedptd)(fixedpt_mul_inner(a, b) >> (fixedptd)FIXEDPOINT_FRACTION_BITS);
+	return (fixedptd)((fixedptd)a * (fixedptd)b >> (fixedptd)FIXEDPOINT_FRACTION_BITS);
 }
 
 typedef int32_t DT;

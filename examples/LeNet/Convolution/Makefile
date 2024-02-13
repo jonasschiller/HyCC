@@ -3,11 +3,10 @@ CIRCUIT_SIM = ../../../bin/circuit-sim
 
 .PHONY: clean run-sim run-aby
 
-mpc_multL1.circ: MultLayer1.c
+mpc_convL1.circ: ConvL1.c
 	$(CBMC_GC) $^
 
-mpc_multL2.circ: MultLayer2.c
+mpc_convL2.circ: ConvL2.c
 	$(CBMC_GC) $^
 
-mpc_multL3.circ: MultLayer3.c
-	$(CBMC_GC) $^
+

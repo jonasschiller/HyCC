@@ -3,13 +3,8 @@
 #include <inttypes.h>
 
 // Parameters taken from the paper
-#define IMAGE_WIDTH 28 // 28
-#define WINDOW_WIDTH 5
-#define STRIDE 2
-#define OUTPUT_CHANNELS 5 // 5
-
-#define IMAGE_CROP 13							   // 13 with padding
-#define SIZE_CONVOLUTION (IMAGE_CROP * IMAGE_CROP) // 169
+#define IMAGE_WIDTH 24	  // 24
+#define OUTPUT_CHANNELS 6 // 6
 
 typedef int32_t DT;
 
@@ -58,7 +53,7 @@ void max_pooling_outputs(DT *vals, DT *OUTPUT_res, unsigned outputs, unsigned co
 
 void mpc_main()
 {
-	DT INPUT_A[28 * 28];
-	DT OUTPUT_res[14 * 14];
-	max_pooling_outputs(INPUT_A, OUTPUT_res, 1, 28, 28);
+	DT INPUT_A[24 * 24 * 6];
+	DT OUTPUT_res[12 * 12 * 6];
+	max_pooling_outputs(INPUT_A, OUTPUT_res, 6, 24, 24);
 }
