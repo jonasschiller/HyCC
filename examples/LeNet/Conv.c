@@ -22,14 +22,9 @@ typedef uint32_t ufixedp_t;
 typedef uint64_t ufixedpd_t;
 
 // Decomposed to seperate shifting from remaining code
-fixedptd fixedpt_mul_inner(fixedpt a, fixedpt b)
-{
-	return (fixedptd)a * (fixedptd)b;
-}
-
 fixedpt fixedpt_mul(fixedpt a, fixedpt b)
 {
-	return (fixedptd)(fixedpt_mul_inner(a, b) >> (fixedptd)FIXEDPOINT_FRACTION_BITS);
+	return (fixedptd)((fixedptd)a * (fixedptd)b >> (fixedptd)FIXEDPOINT_FRACTION_BITS);
 }
 
 typedef int32_t DT;
@@ -72,5 +67,5 @@ void mpc_main()
 	DT INPUT_A[5 * 5];
 	DT INPUT_B[2 * 2 * 3];
 	DT OUTPUT_res[4 * 4 * 3];
-	convolution_naive_outputs(INPUT_A, INPUT_B, OUTPUT_res, 5, 2, 3, 1, 3);
+	convolution_naive_outputs(INPUT_A, INPUT_B, OUTPUT_res, 5, 2, 3, 1, 4);
 }

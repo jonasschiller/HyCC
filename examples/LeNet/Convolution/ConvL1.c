@@ -24,12 +24,12 @@ typedef uint64_t ufixedpd_t;
 // Decomposed to seperate shifting from remaining code
 fixedptd fixedpt_mul_inner(fixedpt a, fixedpt b)
 {
-	return (fixedptd)a * (fixedptd)b;
+	return;
 }
 
 fixedpt fixedpt_mul(fixedpt a, fixedpt b)
 {
-	return (fixedptd)(fixedpt_mul_inner(a, b) >> (fixedptd)FIXEDPOINT_FRACTION_BITS);
+	return (fixedptd)((fixedptd)a * (fixedptd)b >> (fixedptd)FIXEDPOINT_FRACTION_BITS);
 }
 
 typedef int32_t DT;
@@ -60,7 +60,7 @@ void convolution_naive_outputs(DT *INPUT_A, DT *INPUT_B, DT *OUTPUT_layer, unsig
 						tmp += fixedpt_mul(kernel[convPos], INPUT_A[(y * stride + wy) * image_width + (x * stride + wx)]);
 					}
 				}
-				OUTPUT_layer[oPos] = tmp;
+				res[oPos] = tmp;
 			}
 		}
 		memcpy(OUTPUT_layer + o * (conv_width * conv_width), res, conv_width * conv_width * sizeof(DT));
@@ -71,6 +71,6 @@ void mpc_main()
 {
 	DT INPUT_A[28 * 28];
 	DT INPUT_B[5 * 5 * 6];
-	DT OUTPUT_res[24 * 24];
-	convolution_naive_outputs(INPUT_A, INPUT_B, OUTPUT_res, 28, 5, 24, 1, 24);
+	DT OUTPUT_res[24 * 24 * 6];
+	convolution_naive_outputs(INPUT_A, INPUT_B, OUTPUT_res, 28, 5, 6, 1, 24);
 }

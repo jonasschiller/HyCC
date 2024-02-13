@@ -53,7 +53,7 @@ void convolution_naive_outputs(DT *INPUT_A, DT *INPUT_B, DT *OUTPUT_layer, unsig
 						tmp += fixedpt_mul(kernel[convPos], INPUT_A[(y * stride + wy) * image_width + (x * stride + wx)]);
 					}
 				}
-				OUTPUT_layer[oPos] = tmp;
+				res[oPos] = tmp;
 			}
 		}
 		memcpy(OUTPUT_layer + o * (conv_width * conv_width), res, conv_width * conv_width * sizeof(DT));
@@ -65,5 +65,5 @@ void mpc_main()
 	DT INPUT_A[12 * 12 * 6];
 	DT INPUT_B[5 * 5 * 16];
 	DT OUTPUT_res[8 * 8 * 16];
-	convolution_naive_outputs(INPUT_A, INPUT_B, OUTPUT_res, 12, 5, 12, 1, 12);
+	convolution_naive_outputs(INPUT_A, INPUT_B, OUTPUT_res, 12, 5, 16, 1, 12);
 }
