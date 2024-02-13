@@ -1,8 +1,0 @@
-CORE
-Test.class
---function Test.goo
-^EXIT=0$
-^SIGNAL=0$
-^VERIFICATION SUCCESSFUL$
---
-^warning: ignoring

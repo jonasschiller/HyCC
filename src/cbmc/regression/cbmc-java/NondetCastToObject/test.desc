@@ -1,6 +1,0 @@
-CORE
-NondetCastToObject.class
---function NondetCastToObject.main
-^VERIFICATION SUCCESSFUL$
---
-^warning: ignoring

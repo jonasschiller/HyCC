@@ -1,6 +1,0 @@
-CORE
-NondetDouble.class
---function NondetDouble.main
-^VERIFICATION FAILED$
---
-^warning: ignoring

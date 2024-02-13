@@ -1,7 +1,0 @@
-CORE
-main.c
---pointer-check --bounds-check --function f
-^SIGNAL=0$
-^VERIFICATION FAILED$
---
-^warning: ignoring

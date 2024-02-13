@@ -1,6 +1,0 @@
-CORE
-NondetByte.class
---function NondetByte.main
-^VERIFICATION FAILED$
---
-^warning: ignoring

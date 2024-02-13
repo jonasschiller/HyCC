@@ -1,6 +1,0 @@
-CORE
-NondetInt.class
---function NondetInt.main
-^VERIFICATION FAILED$
---
-^warning: ignoring

@@ -1,2 +1,0 @@
-CBMC_GC_ROOT = ../../../
-MINIMIZATION_TIME = 600

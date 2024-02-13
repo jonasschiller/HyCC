@@ -1,6 +1,0 @@
-CORE
-test.class
---function test.f --cover location
-\d+ of \d+ covered
---
-^warning: ignoring

@@ -1,5 +1,0 @@
-CORE
-Test.class
---show-goto-functions --function Test.main
-java::Unused::clinit_wrapper
-Unused\.<clinit>\(\)

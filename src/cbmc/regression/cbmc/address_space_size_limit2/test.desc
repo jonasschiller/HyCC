@@ -1,5 +1,0 @@
-KNOWNBUG
-test.c
---32 --object-bits 31 --unwind 11 --no-simplify
-dynamic object too large
---
