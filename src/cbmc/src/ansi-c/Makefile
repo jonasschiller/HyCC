@@ -68,7 +68,6 @@ ansi_c_y.tab.cpp: parser.y
 	$(YACC) $(YFLAGS) $$flags -pyyansi_c -d parser.y -o $@
 
 ansi_c_y.tab.h: ansi_c_y.tab.cpp
-        mv ansi_c_y.tab.cpp.h ansi_c_y.tab.h 
 
 ansi_c_lex.yy.cpp: scanner.l
 	$(LEX) -Pyyansi_c -o$@ scanner.l

@@ -69,8 +69,8 @@ void convolution_naive_outputs(DT *INPUT_A, DT *INPUT_B, DT *OUTPUT_layer, unsig
 
 void mpc_main()
 {
-	DT INPUT_A[5 * 5];
-	DT INPUT_B[2 * 2 * 3];
-	DT OUTPUT_res[4 * 4 * 3];
-	convolution_naive_outputs(INPUT_A, INPUT_B, OUTPUT_res, 5, 2, 3, 1, 3);
+	DT INPUT_A[28 * 28];
+	DT INPUT_B[5 * 5 * 6];
+	DT OUTPUT_res[24 * 24];
+	convolution_naive_outputs(INPUT_A, INPUT_B, OUTPUT_res, 28, 5, 24, 1, 24);
 }
