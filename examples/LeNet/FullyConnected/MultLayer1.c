@@ -32,25 +32,32 @@ void mmulT_unrolled(DT *INPUT_A, DT *INPUT_B, DT *OUTPUT_res, unsigned input_siz
 	// Perform the vector-matrix multiplication
 	for (unsigned i = 0; i < output_size; i++)
 	{
+		DT sum = 0;
 		unsigned j = 0;
 		while (j < input_size)
 		{
-			if (j + 8 <= input_size)
+
+			if (j + 8 < input_size)
 			{
-				OUTPUT_res[i] += fixedpt_mul(content[j], weights[i * input_size + j]) + fixedpt_mul(content[j + 1], weights[i * input_size + j + 1]) + fixedpt_mul(content[j + 2], weights[i * input_size + j + 2]) + fixedpt_mul(content[j + 3], weights[i * input_size + j + 3]) + fixedpt_mul(content[j + 4], weights[i * input_size + j + 4]) + fixedpt_mul(content[j + 5], weights[i * input_size + j + 5]) + fixedpt_mul(content[j + 6], weights[i * input_size + j + 6]) + fixedpt_mul(content[j + 7], weights[i * input_size + j + 7]);
+				sum += fixedpt_mul(content[j], weights[i * input_size + j]) + fixedpt_mul(content[j + 1], weights[i * input_size + j + 1]) + fixedpt_mul(content[j + 2], weights[i * input_size + j + 2]) + fixedpt_mul(content[j + 3], weights[i * input_size + j + 3]) + fixedpt_mul(content[j + 4], weights[i * input_size + j + 4]) + fixedpt_mul(content[j + 5], weights[i * input_size + j + 5]) + fixedpt_mul(content[j + 6], weights[i * input_size + j + 6]) + fixedpt_mul(content[j + 7], weights[i * input_size + j + 7]);
 				j = j + 8;
 			}
-			else if (j + 4 <= input_size)
+			else if (j + 4 < input_size)
 			{
-				OUTPUT_res[i] += fixedpt_mul(content[j], weights[i * input_size + j]) + fixedpt_mul(content[j + 1], weights[i * input_size + j + 1]) + fixedpt_mul(content[j + 2], weights[i * input_size + j + 2]) + fixedpt_mul(content[j + 3], weights[i * input_size + j + 3]);
+				sum += fixedpt_mul(content[j], weights[i * input_size + j]) + fixedpt_mul(content[j + 1], weights[i * input_size + j + 1]) + fixedpt_mul(content[j + 2], weights[i * input_size + j + 2]) + fixedpt_mul(content[j + 3], weights[i * input_size + j + 3]);
 				j = j + 4;
+			}
+			else if (j < input_size) // Add this condition to prevent index out of bounds
+			{
+				sum += fixedpt_mul(content[j], weights[i * input_size + j]);
+				j = j + 1;
 			}
 			else
 			{
-				OUTPUT_res[i] += fixedpt_mul(content[j], weights[i * input_size + j]);
-				j = j + 1;
+				break; // Exit the loop if j exceeds input_size
 			}
 		}
+		OUTPUT_res[i] = sum;
 	}
 }
 
