@@ -73,7 +73,7 @@ void logRegStep(int32_t INPUT_A[], int32_t INPUT_B[], int32_t OUTPUT_res[], int 
 
 void mpc_main()
 {
-    int32_t INPUT_A[SAMPLES * FEATURES];
+    int32_t INPUT_A[SAMPLES * FEATURES + SAMPLES];
     int32_t INPUT_B[FEATURES];
     int32_t OUTPUT_res[FEATURES];
     logRegStep(INPUT_A, INPUT_B, OUTPUT_res, SAMPLES, FEATURES, LEARNING_RATE);
