@@ -38,10 +38,8 @@ void logRegStep(int32_t INPUT_A[], int32_t INPUT_B[], int32_t OUTPUT_res[], int 
     for (i = 0; i < samples; i++)
     {
         sum = 0;
-        for (k = 0; k < features; k++)
-        {
-            sum += fixedpt_mul(train[i * features + k], weights[k]);
-        }
+
+        sum += fixedpt_mul(train[i * features], weights[0]) + fixedpt_mul(train[i * features + 1], weights[1]) + fixedpt_mul(train[i * features + 2], weights[2]) + fixedpt_mul(train[i * features + 3], weights[3]) + fixedpt_mul(train[i * features + 4], weights[4]) + fixedpt_mul(train[i * features + 5], weights[5]) + fixedpt_mul(train[i * features + 6], weights[6]) + fixedpt_mul(train[i * features + 7], weights[7]) + fixedpt_mul(train[i * features + 8], weights[8]) + fixedpt_mul(train[i * features + 9], weights[9]);
         if (sum > 128)
         {
             sum = 256;
@@ -59,11 +57,26 @@ void logRegStep(int32_t INPUT_A[], int32_t INPUT_B[], int32_t OUTPUT_res[], int 
             sum = 0;
         }
         // We perform the backward pass
-        for (k = 0; k < features; k++)
-        {
-            temp[k] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + k]));
-            weights[k] = weights[k] + temp[k];
-        }
+        temp[0] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 0]));
+        weights[0] = weights[0] + temp[0];
+        temp[1] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 1]));
+        weights[1] = weights[1] + temp[1];
+        temp[2] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 2]));
+        weights[2] = weights[2] + temp[2];
+        temp[3] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 3]));
+        weights[3] = weights[3] + temp[3];
+        temp[4] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 4]));
+        weights[4] = weights[4] + temp[4];
+        temp[5] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 5]));
+        weights[5] = weights[5] + temp[5];
+        temp[6] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 6]));
+        weights[6] = weights[6] + temp[6];
+        temp[7] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 7]));
+        weights[7] = weights[7] + temp[7];
+        temp[8] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 8]));
+        weights[8] = weights[8] + temp[8];
+        temp[9] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 9]));
+        weights[9] = weights[9] + temp[9];
     }
     for (k = 0; k < features; k++)
     {
