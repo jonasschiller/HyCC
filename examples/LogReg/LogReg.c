@@ -54,15 +54,15 @@ void logRegStep(int32_t INPUT_A[], int32_t INPUT_B[], int32_t OUTPUT_res[], int 
         sum = 0;
     }
     // We perform the backward pass
-    temp[0] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 0]));
+    temp[0] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[0]));
     weights[0] = weights[0] + temp[0];
-    temp[1] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 1]));
+    temp[1] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[1]));
     weights[1] = weights[1] + temp[1];
-    temp[2] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 2]));
+    temp[2] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[2]));
     weights[2] = weights[2] + temp[2];
-    temp[3] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 3]));
+    temp[3] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[3]));
     weights[3] = weights[3] + temp[3];
-    temp[4] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 4]));
+    temp[4] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[4]));
     weights[4] = weights[4] + temp[4];
     /*
     temp[5] = fixedpt_mul(learning_rate, fixedpt_mul((label[i] - sum), train[i * features + 5]));
