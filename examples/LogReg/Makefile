@@ -1,4 +1,4 @@
-CBMC_GC = ../../../bin/cbmc-gc
+CBMC_GC = ../../bin/cbmc-gc
 CIRCUIT_SIM = ../../bin/circuit-sim
 
 .PHONY: clean run-sim run-aby

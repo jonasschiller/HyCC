@@ -36,8 +36,8 @@ void logRegStep(int32_t INPUT_A[], int32_t INPUT_B[], int32_t OUTPUT_res[], int 
 
     sum = 0;
 
-    sum += fixedpt_mul(train[0], weights[0]) + fixedpt_mul(train[1], weights[1]) + fixedpt_mul(train[2], weights[2]) + fixedpt_mul(train[3], weights[3]) + fixedpt_mul(train[4], weights[4]) //+ fixedpt_mul(train[5], weights[5]) + fixedpt_mul(train[6], weights[6]) + fixedpt_mul(train[7], weights[7]) + fixedpt_mul(train[8], weights[8]) + fixedpt_mul(train[9], weights[9]);
-           if (sum > 128)
+    sum += fixedpt_mul(train[0], weights[0]) + fixedpt_mul(train[1], weights[1]) + fixedpt_mul(train[2], weights[2]) + fixedpt_mul(train[3], weights[3]) + fixedpt_mul(train[4], weights[4]); //+ fixedpt_mul(train[5], weights[5]) + fixedpt_mul(train[6], weights[6]) + fixedpt_mul(train[7], weights[7]) + fixedpt_mul(train[8], weights[8]) + fixedpt_mul(train[9], weights[9]);
+    if (sum > 128)
     {
         sum = 256;
     }
