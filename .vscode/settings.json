@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "functional": "c"
-    }
+    },
+    "cmake.sourceDirectory": "C:/Users/q533604/HyCC/src/cbmc/regression/cbmc"
 }
