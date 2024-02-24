@@ -6,3 +6,5 @@ CIRCUIT_SIM = ../../bin/circuit-sim
 mpc_LogReg.circ: LogReg.c
 	$(CBMC_GC) $^  --minimization-time-limit 1800
 
+mpc_weights.circ: weights.c
+	$(CBMC_GC) $^  --minimization-time-limit 1800
