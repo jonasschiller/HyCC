@@ -30,9 +30,13 @@ ufixedp_t fixedpt_add_overflow_free(ufixedp_t a, ufixedp_t b)
 void updateWeights(fixedpt INPUT_A[], fixedpt OUTPUT_res[], int32_t features)
 {
     fixedpt sum[features];
-    fixedpt train[features];
-
-    memcpy(train, INPUT_A, sizeof(int32_t) * features * 300);
+    fixedpt train[features * 300];
+    sum[0] = 0;
+    sum[1] = 0;
+    sum[2] = 0;
+    sum[3] = 0;
+    sum[4] = 0;
+    memcpy(train, INPUT_A, sizeof(fixedpt) * features * 300);
     for (int i = 0; i < 300; i++)
     {
         sum[0] = fixedpt_add_overflow_free(sum[0], train[i * features]);
@@ -41,16 +45,15 @@ void updateWeights(fixedpt INPUT_A[], fixedpt OUTPUT_res[], int32_t features)
         sum[3] = fixedpt_add_overflow_free(sum[3], train[i * features + 3]);
         sum[4] = fixedpt_add_overflow_free(sum[4], train[i * features + 4]);
     }
-    sum[0] = fixedpt_div(sum[0], 300 << FIXEDPOINT_FRACTION_BITS);
-    sum[1] = fixedpt_div(sum[1], 300 << FIXEDPOINT_FRACTION_BITS);
-    sum[2] = fixedpt_div(sum[2], 300 << FIXEDPOINT_FRACTION_BITS);
-    sum[3] = fixedpt_div(sum[3], 300 << FIXEDPOINT_FRACTION_BITS);
-    sum[4] = fixedpt_div(sum[4], 300 << FIXEDPOINT_FRACTION_BITS);
-    memcpy(OUTPUT_res, sum, sizeof(fixedpt) * features);
+    OUTPUT_res[0] = fixedpt_div(sum[0], 300 << FIXEDPOINT_FRACTION_BITS);
+    OUTPUT_res[1] = fixedpt_div(sum[1], 300 << FIXEDPOINT_FRACTION_BITS);
+    OUTPUT_res[2] = fixedpt_div(sum[2], 300 << FIXEDPOINT_FRACTION_BITS);
+    OUTPUT_res[3] = fixedpt_div(sum[3], 300 << FIXEDPOINT_FRACTION_BITS);
+    OUTPUT_res[4] = fixedpt_div(sum[4], 300 << FIXEDPOINT_FRACTION_BITS);
 }
 void mpc_main()
 {
-    int32_t INPUT_A[FEATURES * 300];
-    int32_t OUTPUT_res[FEATURES];
-    logRegStep(INPUT_A, OUTPUT_res, FEATURES, LEARNING_RATE);
+    fixedpt INPUT_A[FEATURES * 300];
+    fixedpt OUTPUT_res[FEATURES];
+    updateWeights(INPUT_A, OUTPUT_res, FEATURES);
 }
